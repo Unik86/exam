@@ -37,6 +37,5 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
    	<bean id="questionBo" class="exam.model.bo.QuestionBoImpl" >
    		<property name="questionDao" ref="questionDao" />
   	</bean>
- 
-  
+   
 </beans>

@@ -13,18 +13,15 @@ import org.springframework.stereotype.Repository;
 
 import exam.model.entity.Question;
 
-public class QuestionDaoImpl extends HibernateDaoSupport implements QuestionDao{
+public class QuestionDaoImpl implements QuestionDao{
 	
 	@Override
 	public List<Question> listQuestions(int numberOfQuestions) {
-        //List<Question> list = (List<Question>) getHibernateTemplate().find("FROM Question ORDER BY RAND() LIMIT 5", numberOfQuestions);
-        List<Question> list = (List<Question>) getHibernateTemplate().find("WHERE idQuestions=?", numberOfQuestions);
-		return list;
+		return null;
 	}
 
 	@Override
 	public List<Boolean> result(String userAnswers) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

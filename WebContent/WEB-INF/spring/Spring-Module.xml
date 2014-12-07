@@ -7,5 +7,4 @@
 	<import resource="Spring-Datasource.xml" />
 	<import resource="Spring-Beans.xml" />
 	
- 
 </beans>

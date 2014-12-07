@@ -13,8 +13,7 @@ import exam.model.entity.Answer;
 import exam.model.entity.Question;
 
 public class QuestionDaoImplJdbc implements QuestionDao{
-	
-	
+		
 	private DataSource dataSource;
 	 
 	public void setDataSource(DataSource dataSource) {
@@ -51,7 +50,7 @@ public class QuestionDaoImplJdbc implements QuestionDao{
 					answer = new Answer();
 					answer.setIdAnswer(rsAns.getInt("idAnswer"));
 					answer.setTextAnswer(rsAns.getString("textAnswer"));
-					answer.setRight(rsAns.getBoolean("isRight"));
+					//answer.setRight(rsAns.getBoolean("isRight"));
 					listAnswer.add(answer);
 				}
 				question.setAllAnswer(listAnswer);
@@ -80,7 +79,6 @@ public class QuestionDaoImplJdbc implements QuestionDao{
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			//ps.setInt(1, numberOfQuestions);
 			ResultSet rsResult = ps.executeQuery();
 
 			while(rsResult.next()) {
