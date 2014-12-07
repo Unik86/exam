@@ -2,9 +2,12 @@ package exam.model.bo;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import exam.model.dao.QuestionDao;
 import exam.model.entity.Question;
 
+@Component
 public class QuestionBoImpl implements QuestionBo{
 	
 	QuestionDao questionDao;

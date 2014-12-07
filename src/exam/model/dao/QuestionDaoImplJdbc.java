@@ -7,11 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import exam.model.entity.Answer;
 import exam.model.entity.Question;
 
+@Resource
 public class QuestionDaoImplJdbc implements QuestionDao{
 		
 	private DataSource dataSource;
