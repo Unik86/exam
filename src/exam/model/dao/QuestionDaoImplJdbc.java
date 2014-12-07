@@ -70,9 +70,9 @@ public class QuestionDaoImplJdbc implements QuestionDao{
 	}
 
 	@Override
-	public List<Boolean> result(String userAnswers) {
-		List<Boolean> list = new ArrayList<Boolean>();
-		String sql = "SELECT * FROM Answer WHERE idAnswer IN (%s)";
+	public int result(String userAnswers) {
+		int mark = 0;
+		String sql = "SELECT count(*) FROM Answer WHERE idAnswer IN (%s) AND isRight=true";
 		
 		Connection conn = null;
  
@@ -81,8 +81,8 @@ public class QuestionDaoImplJdbc implements QuestionDao{
 			PreparedStatement ps = conn.prepareStatement(String.format(sql, userAnswers));
 			ResultSet rsResult = ps.executeQuery();
 
-			while(rsResult.next()) {
-				list.add(rsResult.getBoolean("isRight"));
+			if(rsResult.next()) {
+				mark = rsResult.getInt(1);
 			}
 			ps.close();
 		} catch (SQLException e) {
@@ -94,7 +94,7 @@ public class QuestionDaoImplJdbc implements QuestionDao{
 				} catch (SQLException e) {}
 			}
 		}
-		return list;
+		return mark;
 	}
 	
 }

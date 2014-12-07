@@ -20,13 +20,6 @@ public class QuestionBoImpl implements QuestionBo{
 
 	@Override
 	public int result(String userAnswers) {
-		List<Boolean> userResult = questionDao.result(userAnswers);
-		int mark = 0;
-		for(boolean isRight : userResult){
-			if(isRight){
-				mark++;
-			}
-		}
-		return mark;
+		return questionDao.result(userAnswers);
 	}
 }

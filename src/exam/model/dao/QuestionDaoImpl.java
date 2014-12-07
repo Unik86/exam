@@ -12,8 +12,8 @@ public class QuestionDaoImpl implements QuestionDao{
 	}
 
 	@Override
-	public List<Boolean> result(String userAnswers) {
-		return null;
+	public int result(String userAnswers) {
+		return 0;
 	}
 
 	
