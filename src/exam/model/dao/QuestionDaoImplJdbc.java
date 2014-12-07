@@ -72,13 +72,13 @@ public class QuestionDaoImplJdbc implements QuestionDao{
 	@Override
 	public List<Boolean> result(String userAnswers) {
 		List<Boolean> list = new ArrayList<Boolean>();
-		String sql = "SELECT * FROM Answer WHERE idAnswer IN (" + userAnswers + ")";
+		String sql = "SELECT * FROM Answer WHERE idAnswer IN (%s)";
 		
 		Connection conn = null;
  
 		try {
 			conn = dataSource.getConnection();
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement ps = conn.prepareStatement(String.format(sql, userAnswers));
 			ResultSet rsResult = ps.executeQuery();
 
 			while(rsResult.next()) {
