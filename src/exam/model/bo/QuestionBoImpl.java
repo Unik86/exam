@@ -15,16 +15,18 @@ public class QuestionBoImpl implements QuestionBo{
 	
 	@Override
 	public List<Question> listQuestions(int numberOfQuestions) {		
-		return this.questionDao.listQuestions(numberOfQuestions);
+		return questionDao.listQuestions(numberOfQuestions);
 	}
 
 	@Override
 	public int result(String userAnswers) {
-		List<Boolean> res = this.questionDao.result(userAnswers);
+		List<Boolean> userResult = questionDao.result(userAnswers);
 		int mark = 0;
-		for(boolean b : res)
-			if(b) mark++;
+		for(boolean isRight : userResult){
+			if(isRight){
+				mark++;
+			}
+		}
 		return mark;
 	}
-	
 }

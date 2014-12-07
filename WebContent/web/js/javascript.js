@@ -3,13 +3,13 @@
 	var divTimer = $("#timer");
 	var divQuestion = $("#question");
 	var divAnswers = $("#answers");
+	
 	var arrQuestions = new Array();
-	
-	var count = 0;
 	var userAnswers = new Array();
+	var count = 0;
 	
-	var stime = 30;
-	var time = stime;
+	var setTime = 30;
+	var time = setTime;
 	var startTime;
 	
 	$(window).load(function () {
@@ -19,7 +19,7 @@
 			success: function(data){		
 				arrQuestions = JSON.parse(data);
 				startTime = setInterval(funTime, 1000);
-				divTimer.text(stime);
+				divTimer.text(setTime);
 				writeQuestion();
 			 },
 			error:function( jqXHR, textStatus, errorThrown){
@@ -45,14 +45,14 @@
 	divAnswers.on("click", "div.answer", function(){		
 		userAnswers[count-1] = $(this).attr("type");	
 		if(count < 5) {
-			time = stime;
+			time = setTime;
 			clearInterval(startTime);
 			startTime = setInterval(funTime, 1000);
-			divTimer.text(stime);
+			divTimer.text(setTime);
 			writeQuestion();
 		}
 		else {
-			time = stime;
+			time = setTime;
 			clearInterval(startTime);
 			divTimer.text("");
 			sendAnswer();	
@@ -67,7 +67,7 @@
 			data: {arrAnswers : userAnswers.toString()},
 			success: function(data){		
 				divTimer.html("");
-				divQuestion.text("Ваша оценка " + data);
+				divQuestion.text("Вы правильно ответили на " + data + " из 5 вопросов");
 				divAnswers.html("");
 			 },
 			error:function( jqXHR, textStatus, errorThrown){
@@ -79,14 +79,14 @@
 		if(time < 0){
 			userAnswers[count-1] = 0;	
 			if(count < 5) {
-				time = stime;
+				time = setTime;
 				clearInterval(startTime);
 				startTime = setInterval(funTime, 1000);
-				divTimer.text(stime);
+				divTimer.text(setTime);
 				writeQuestion();
 			}
 			else {
-				time = stime;
+				time = setTime;
 				clearInterval(startTime);
 				divTimer.text("");
 				sendAnswer();	
