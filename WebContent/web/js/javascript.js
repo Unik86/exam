@@ -66,7 +66,10 @@
 			url: 'sendanswers.html',
 			data: {arrAnswers : userAnswers.toString()},
 			success: function(data){		
-				alert("Ваша оценка " + data);
+				//alert("Ваша оценка " + data);
+				divTimer.html("");
+				divQuestion.text("Ваша оценка " + data);
+				divAnswers.html("");
 			 },
 			error:function( jqXHR, textStatus, errorThrown){
 				alert("Ошибка");  
