@@ -2,12 +2,28 @@ package exam.model.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Question")
 public class Question {
 
+	@Id
+    @Column(name="idQuestion")
 	private int idQuestion;
 	
+	@Column(name="textQuestion")
 	private String textQuestion;
 	
+	@OneToMany(mappedBy="question")
 	private List<Answer> allAnswer;
 	
 	public int getIdQuestion() {
@@ -22,6 +38,7 @@ public class Question {
 	public void setTextQuestion(String textQuestion) {
 		this.textQuestion = textQuestion;
 	}
+	
 	public List<Answer> getAllAnswer() {
 		return allAnswer;
 	}

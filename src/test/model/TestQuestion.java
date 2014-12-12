@@ -20,13 +20,14 @@ public class TestQuestion {
 		QuestionDao questionDao = (QuestionDao)appContext.getBean("questionDao");
 		
 		List<Question> list = questionBo.listQuestions(5);
+
 		for(Question q : list)
 			System.out.println(q);
 		
 //		List<Boolean> list = questionDao.result("1,2,3,4,5,6,7");
 //		for(Boolean q : list)
 //			System.out.println(q);
-//		
-//		System.out.println(questionBo.result("1,2,3,4,5,6,7"));
+		
+//		System.out.println(questionBo.result("1,2,3"));
 	}
 }

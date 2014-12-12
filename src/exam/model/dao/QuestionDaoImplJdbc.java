@@ -10,12 +10,15 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import exam.model.entity.Answer;
 import exam.model.entity.Question;
 
 @Resource
 public class QuestionDaoImplJdbc implements QuestionDao{
 		
+	@Autowired
 	private DataSource dataSource;
 	 
 	public void setDataSource(DataSource dataSource) {
@@ -28,7 +31,6 @@ public class QuestionDaoImplJdbc implements QuestionDao{
 		String sql = "SELECT * FROM Question ORDER BY RAND() LIMIT ?";
 		
 		Connection conn = null;
- 
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
