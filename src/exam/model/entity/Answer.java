@@ -1,16 +1,21 @@
 package exam.model.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
 @Table(name="Answer")
-public class Answer {
+public class Answer implements Serializable{
 	
 	@Id
     @Column(name="idAnswer")
@@ -23,16 +28,6 @@ public class Answer {
 	//@Column(name="isRight")
 	private boolean isRight;
 	
-	@ManyToOne
-    @JoinColumn(name="idQuestion_parent", insertable=false, updatable=false)
-	private Question question;
-	
-	public Question getQuestion() {
-		return question;
-	}
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
 	public int getIdAnswer() {
 		return idAnswer;
 	}
